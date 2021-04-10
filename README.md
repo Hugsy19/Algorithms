@@ -1,19 +1,19 @@
-﻿# Algorithms 4th 
+﻿<h1 align="center">Algorithms 4th Notes</h1>
 
-* 课程主页：[第一部分](https://www.coursera.org/learn/algorithms-part1) [第二部分](https://www.coursera.org/learn/algorithms-part2)
-* 配套网站：[主页](https://algs4.cs.princeton.edu/home/)
+## 简介
 
-## 笔记
+《算法（第4版）》及其配套Algorithms课程学习笔记。
 
-[【Princeton】算法(1)：Union-Find](https://hugsy.top/2019/07/15/algs_1/)
+## 参考
 
-[【Princeton】算法(2)：栈和队列](https://hugsy.top/2019/07/30/algs_2/)
+* [算法（第4版）](https://book.douban.com/subject/19952400/)
+* [Algorithms, Part I](https://www.coursera.org/learn/algorithms-part1) 
+* [Algorithms, Part II](https://www.coursera.org/learn/algorithms-part2)
+* [配套网站](https://algs4.cs.princeton.edu/home/)
 
-## 习题
+## 环境
 
-[【Princeton】算法习题(1)：Union-Find](https://hugsy.top/2019/07/17/algs_1_ex/)
-
-[【Princeton】算法习题(2)：栈和队列](https://hugsy.top/2019/07/31/algs_2_ex/)
-
-
-
+- system: wsl（ubuntu 20.04）
+- IDE: VS Code
+- language：Java/C++
+- compiler: open-jdk/gcc
