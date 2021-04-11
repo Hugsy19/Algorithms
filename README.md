@@ -1,6 +1,4 @@
-﻿<h1 align="center">Algorithms 4th Notes</h1>
-
-## 简介
+﻿## 简介
 
 《算法（第4版）》及其配套Algorithms课程学习笔记。
 
