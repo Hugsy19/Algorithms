@@ -33,7 +33,10 @@
 
 **下压栈**（stack）是一种**后进先出**（Last In First Out，LIFO）的线性表，将某个对象添加到该数据结构的过程称为**入栈（push）**，取出的过程则称为**出栈（pop）**。
 
-```java java >folded
+<details>
+  <summary>折叠代码块</summary>
+  <pre><code> 
+
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 
@@ -103,4 +106,5 @@ public class Stack<Item> implements Iterable<Item> {
         }
     }
 }
-```
+  </code></pre>
+</details>
