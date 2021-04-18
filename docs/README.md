@@ -8,7 +8,7 @@
 
 ## 环境
 
-- system: wsl（ubuntu 20.04）
+- system: WSL2（ubuntu 20.04）
 - IDE: VS Code
 - language：Java/C++
 - compiler: open-jdk/gcc
