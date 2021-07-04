@@ -18,10 +18,81 @@ class ResizingArrayStack {
   using const_reference = const T&;
   using difference_type = ptrdiff_t;
   using size_type = size_t;
-  using iterator = typename ResizingArray<T>::iterator;
-  using const_iterator = typename ResizingArray<T>::const_iterator;
+  using iterator = typename ResizingArray<T>::reverse_iterator;
+  using const_iterator = typename ResizingArray<T>::const_reverse_iterator;
 
-  
+  ResizingArrayStack() : ra(ResizingArray<T>()) {}
+
+  ResizingArrayStack(std::initializer_list<T> il) : ra(ResizingArray<T>(il)) {}
+
+  iterator begin() { return ra.rbegin(); }
+  iterator end() { return ra.rend(); }
+  const_iterator begin() const { return ra.rbegin(); }
+  const_iterator end() const { return ra.rend(); }
+  const_iterator cbegin() const { return ra.crbegin(); }
+  const_iterator cend() const { return ra.crend(); }
+
+  void push(const_reference x) { ra.pushBack(x); }
+
+  value_type pop() {
+    value_type ret;
+    if (size()) ret = ra.back();
+    ra.popBack();
+    return ret;
+  }
+
+  bool isEmpty() { return size() == 0; }
+  size_type size() { return ra.size(); }
+
+ private:
+  ResizingArray<T> ra;
+
+ public:
+  static void MainTest(int argc = 0, char* argv[] = nullptr) {
+    using std::cout;
+    using std::endl;
+
+    ResizingArrayStack<int> ras1;
+    for (int i = 0; i < 5; ++i) {
+      ras1.push(i);
+    }
+    cout << "ras1 contains " << ras1.size() << " elements:" << endl;
+    for (const auto& x : ras1) {
+      cout << x << " ";
+    }
+    cout << endl;
+    ResizingArrayStack<int> ras2{6, 7, 8, 9, 10};
+    cout << "ras2 contains " << ras2.size() << " elements:" << endl;
+    for (const auto& x : ras2) {
+      cout << x << " ";
+    }
+    cout << endl;
+    cout << "Pop from ras2: " << ras2.pop() << endl;
+    cout << "Pop from ras2: " << ras2.pop() << endl;
+    cout << "Pop from ras2: " << ras2.pop() << endl;
+    cout << "Pop from ras2: " << ras2.pop() << endl;
+    cout << "Pop from ras2: " << ras2.pop() << endl;
+    cout << "Pop from ras2: " << ras2.pop() << endl;
+    cout << "ras2 contains " << ras2.size() << " elements." << endl;
+    ResizingArrayStack<int> ras3(ras1);
+    cout << "ras3 copy from ras1:" << endl;
+    for (const auto& x : ras3) {
+      cout << x << " ";
+    }
+    cout << endl;
+    ResizingArrayStack<int> ras4 = ras1;
+    cout << "ras4 assign from ras1:" << endl;
+    for (const auto& x : ras4) {
+      cout << x << " ";
+    }
+    cout << endl;
+    ResizingArrayStack<int> ras5(std::move(ras3));
+    cout << "ras5 move from ras3:" << endl;
+    for (const auto& x : ras5) {
+      cout << x << " ";
+    }
+    cout << endl;
+  }
 };
 }  // namespace algs4
 #endif

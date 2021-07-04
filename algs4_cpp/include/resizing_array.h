@@ -176,7 +176,8 @@ class ResizingArray {
     for (auto it = ra1.crbegin(); it != ra1.crend(); ++it) {
       ra2.pushBack(*it);
       cout << "ra2 contains " << ra2.size() << " elements." << endl;
-      cout << "ra2 can contains " << ra2.capacity() << " elements at most." << endl;
+      cout << "ra2 can contains " << ra2.capacity() << " elements at most."
+           << endl;
     }
     for (size_type i = 0; i < ra2.size(); ++i) {
       cout << ra2[i] << " ";
@@ -185,14 +186,17 @@ class ResizingArray {
     for (size_type i = ra2.size(); i != 1; --i) {
       ra2.popBack();
       cout << "ra2 contains " << ra2.size() << " elements." << endl;
-      cout << "ra2 can contains " << ra2.capacity() << " elements at most." << endl;
+      cout << "ra2 can contains " << ra2.capacity() << " elements at most."
+           << endl;
     }
     ra2.reserve(10);
     cout << "ra2 contains " << ra2.size() << " elements." << endl;
-    cout << "ra2 can contains " << ra2.capacity() << " elements at most." << endl;
+    cout << "ra2 can contains " << ra2.capacity() << " elements at most."
+         << endl;
     ra2.resize(11);
     cout << "ra2 contains " << ra2.size() << " elements." << endl;
-    cout << "ra2 can contains " << ra2.capacity() << " elements at most." << endl;
+    cout << "ra2 can contains " << ra2.capacity() << " elements at most."
+         << endl;
     ResizingArray<int> ra3{6, 7, 8, 9, 10};
     cout << "ra3 contains " << ra3.size() << " elements:" << endl;
     for (const auto& x : ra3) {
