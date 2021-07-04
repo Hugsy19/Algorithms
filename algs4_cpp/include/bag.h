@@ -32,10 +32,10 @@ class Bag {
   const_iterator cbegin() const { return sll.cbegin(); }
   const_iterator cend() const { return sll.cend(); }
 
+  void add(const_reference x) { sll.insert(x); }
+
   bool isEmpty() { return size() == 0; }
   size_type size() { return sll.size(); }
-
-  void add(const_reference x) { sll.insert(x); }
 
  private:
   SingleLinkedList<T> sll;

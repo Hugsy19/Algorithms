@@ -143,14 +143,23 @@ class SingleLinkedList {
   const_iterator cbegin() const { return const_iterator(first); }
   const_iterator cend() const { return const_iterator(); }
 
-  size_type size() { return sz; }
-
-  void insert(const_reference x) {
+  void pushFront(const_reference x) {
     Node* oldFirst = first;
     first = createNode(x);
     first->next = oldFirst;
     ++sz;
   }
+
+  void popFront() {
+    Node* tmp = first;
+    first = first->next;
+    destroyNode(tmp);
+    --sz;
+  }
+
+  value_type front() { return first->data; }
+
+  size_type size() { return sz; }
 
  private:
   Node* first;
@@ -178,8 +187,8 @@ class SingleLinkedList {
     }
   }
 
-  void destoryNode(Node* n) {
-    alloc.destory(&n->data);
+  void destroyNode(Node* n) {
+    alloc.destroy(&n->data);
     alloc.deallocate(n, 1);
   }
 
@@ -198,13 +207,18 @@ class SingleLinkedList {
 
     SingleLinkedList<int> sll1;
     for (int i = 0; i < 5; ++i) {
-      sll1.insert(i);
+      sll1.pushFront(i);
     }
+    cout << "current elements of sll1: " << sll1.front() << endl;
     cout << "sll1 contains " << sll1.size() << " elements:" << endl;
     for (const auto& x : sll1) {
       cout << x << " ";
     }
     cout << endl;
+    sll1.popFront();
+    sll1.popFront();
+    cout << "current elements of sll1: " << sll1.front() << endl;
+    cout << "sll1 contains " << sll1.size() << " elements:" << endl;
     SingleLinkedList<int> sll2{6, 7, 8, 9, 10};
     cout << "sll2 contains " << sll2.size() << " elements:" << endl;
     for (const auto& x : sll2) {

@@ -36,8 +36,10 @@ class ResizingArrayStack {
 
   value_type pop() {
     value_type ret;
-    if (size()) ret = ra.back();
-    ra.popBack();
+    if (!isEmpty()) {
+      ret = ra.back();
+      ra.popBack();
+    }
     return ret;
   }
 
