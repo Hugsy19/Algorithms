@@ -6,7 +6,6 @@
 
 #include <iterator>
 #include <memory>
-#include <vector>
 
 namespace algs4 {
 template <typename T>
