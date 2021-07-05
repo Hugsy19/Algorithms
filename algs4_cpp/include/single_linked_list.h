@@ -21,15 +21,6 @@ class SingleLinkedList {
   friend void swap<T>(SingleLinkedList<T>&, SingleLinkedList<T>&);
 
  public:
-  using self = SingleLinkedList<T>;
-  using value_type = T;
-  using pointer = T*;
-  using const_pointer = const T*;
-  using reference = T&;
-  using const_reference = const T&;
-  using difference_type = ptrdiff_t;
-  using size_type = size_t;
-
   struct Node {
     T data;
     Node* next;
@@ -113,6 +104,14 @@ class SingleLinkedList {
     const Node* curr;
   };
 
+  using self = SingleLinkedList<T>;
+  using value_type = T;
+  using pointer = T*;
+  using const_pointer = const T*;
+  using reference = T&;
+  using const_reference = const T&;
+  using difference_type = ptrdiff_t;
+  using size_type = size_t;
   using iterator = Iterator;
   using const_iterator = ConstIterator;
 

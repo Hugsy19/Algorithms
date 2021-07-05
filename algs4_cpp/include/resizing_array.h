@@ -81,7 +81,7 @@ class ResizingArray {
   }
 
   void popBack() {
-    if (size()) {
+    if (first != nullptr) {
       alloc.destroy(--ed);
     }
     dealloc();
