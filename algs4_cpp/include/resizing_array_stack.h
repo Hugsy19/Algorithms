@@ -4,6 +4,8 @@
 #ifndef _RESIZING_ARRAY_STACK_
 #define _RESIZING_ARRAY_STACK_
 
+#include <iostream>
+
 #include "resizing_array.h"
 
 namespace algs4 {
@@ -23,8 +25,6 @@ class ResizingArrayStack {
 
   ResizingArrayStack() : ra(ResizingArray<T>()) {}
 
-  ResizingArrayStack(std::initializer_list<T> il) : ra(ResizingArray<T>(il)) {}
-
   iterator begin() { return ra.rbegin(); }
   iterator end() { return ra.rend(); }
   const_iterator begin() const { return ra.rbegin(); }
@@ -36,9 +36,12 @@ class ResizingArrayStack {
 
   value_type pop() {
     value_type ret;
-    if (!isEmpty()) {
+    try {
       ret = ra.back();
       ra.popBack();
+    } catch (const std::out_of_range& e) {
+      std::cerr << "Stack overflow!" << std::endl;
+      abort();
     }
     return ret;
   }
@@ -63,13 +66,12 @@ class ResizingArrayStack {
       cout << x << " ";
     }
     cout << endl;
-    ResizingArrayStack<int> ras2{6, 7, 8, 9, 10};
+    ResizingArrayStack<int> ras2(ras1);
     cout << "ras2 contains " << ras2.size() << " elements:" << endl;
     for (const auto& x : ras2) {
       cout << x << " ";
     }
     cout << endl;
-    cout << "Pop from ras2: " << ras2.pop() << endl;
     cout << "Pop from ras2: " << ras2.pop() << endl;
     cout << "Pop from ras2: " << ras2.pop() << endl;
     cout << "Pop from ras2: " << ras2.pop() << endl;

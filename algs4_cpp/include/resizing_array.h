@@ -4,8 +4,10 @@
 #ifndef _RESIZING_ARRAY_
 #define _RESIZING_ARRAY_
 
+#include <initializer_list>
 #include <iterator>
 #include <memory>
+#include <exception>
 
 namespace algs4 {
 template <typename T>
@@ -81,10 +83,12 @@ class ResizingArray {
   }
 
   void popBack() {
-    if (first != nullptr) {
+    if (size()) {
       alloc.destroy(--ed);
+      dealloc();
+    } else {
+      throw std::out_of_range("Array overflow");
     }
-    dealloc();
   }
 
   value_type front() { return *beg; }

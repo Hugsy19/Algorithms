@@ -5,9 +5,8 @@
 #define _SINGLE_LINKED_LIST_
 
 #include <initializer_list>
-#include <iterator>
 #include <memory>
-#include <vector>
+#include <exception>
 
 namespace algs4 {
 template <typename T>
@@ -151,9 +150,13 @@ class SingleLinkedList {
 
   void popFront() {
     Node* tmp = first;
-    first = first->next;
-    destroyNode(tmp);
-    --sz;
+    if ((first)) {
+      first = first->next;
+      destroyNode(tmp);
+      --sz;
+    } else {
+      throw std::out_of_range("List overflow");
+    }
   }
 
   value_type front() { return first->data; }

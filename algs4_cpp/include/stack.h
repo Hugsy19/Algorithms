@@ -4,6 +4,8 @@
 #ifndef _STACK_H_
 #define _STACK_H_
 
+#include <iostream>
+
 #include "single_linked_list.h"
 
 namespace algs4 {
@@ -23,8 +25,6 @@ class Stack {
 
   Stack() : sll(SingleLinkedList<T>()) {}
 
-  Stack(std::initializer_list<T> il) : sll(SingleLinkedList<T>(il)) {}
-
   iterator begin() { return sll.begin(); }
   iterator end() { return sll.end(); }
   const_iterator begin() const { return sll.begin(); }
@@ -36,9 +36,12 @@ class Stack {
 
   value_type pop() {
     value_type ret;
-    if (!isEmpty()) {
+    try {
       ret = sll.front();
       sll.popFront();
+    } catch (const std::out_of_range& e) {
+      std::cerr << "Stack overflow!" << std::endl;
+      abort();
     }
     return ret;
   }
@@ -63,13 +66,12 @@ class Stack {
       cout << x << " ";
     }
     cout << endl;
-    Stack<int> s2{6, 7, 8, 9, 10};
+    Stack<int> s2(s1);
     cout << "s2 contains " << s2.size() << " elements:" << endl;
     for (const auto& x : s2) {
       cout << x << " ";
     }
     cout << endl;
-    cout << "Pop from s2: " << s2.pop() << endl;
     cout << "Pop from s2: " << s2.pop() << endl;
     cout << "Pop from s2: " << s2.pop() << endl;
     cout << "Pop from s2: " << s2.pop() << endl;

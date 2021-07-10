@@ -7,7 +7,7 @@
 #include <initializer_list>
 #include <iterator>
 #include <memory>
-#include <vector>
+#include <exception>
 
 namespace algs4 {
 template <typename T>
@@ -154,13 +154,15 @@ class Queue {
 
   value_type dequeue() {
     value_type ret;
-    if (!isEmpty()) {
+    if (first) {
       ret = first->data;
       Node* tmp = first;
       first = first->next;
       destroyNode(tmp);
       if (isEmpty()) last = nullptr;
       --sz;
+    } else {
+      throw std::out_of_range("Queue overflow");
     }
     return ret;
   }
@@ -224,7 +226,9 @@ class Queue {
     cout << endl;
     cout << "Dequeue form q1: " << q1.dequeue() << endl;
     cout << "Dequeue form q1: " << q1.dequeue() << endl;
-    cout << "q1 contains " << q1.size() << " elements:" << endl;
+    cout << "Dequeue form q1: " << q1.dequeue() << endl;
+    cout << "Dequeue form q1: " << q1.dequeue() << endl;
+    cout << "q1 contains " << q1.size() << " elements." << endl;
     Queue<int> q2{6, 7, 8, 9, 10};
     cout << "q2 contains " << q2.size() << " elements:" << endl;
     for (const auto& x : q2) {
