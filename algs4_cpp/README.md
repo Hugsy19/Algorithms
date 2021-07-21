@@ -15,7 +15,7 @@
 
 - system: WSL2（ubuntu 20.04）
 - IDE: VS Code
-- compiler: gcc-9.3.0
+- compiler: gcc
 
 ## 参考
 
